@@ -11088,8 +11088,22 @@ a.text-dark:focus {
   font-size: 1.8rem;
 }
 
-.TopPageMain .TopPageMain__box--image {
-  width: 200px;
+.TopPageMain__box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.TopPageMain__box__card {
+  width: 10rem;
+  min-width: 15rem;
+}
+
+.TopPageMain__box__card--image {
+  width: 100%;
   height: 200px;
+}
+
+.TopPageMain__box__card--comment {
+  min-height: 100px;
 }
 
