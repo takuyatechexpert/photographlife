@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Auth;
 
 class PostController extends Controller
 {
@@ -25,7 +26,9 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('post.create');
+        $user = Auth::getUser();
+
+        return view('post.create', compact('user'));
     }
 
     /**
@@ -62,6 +65,7 @@ class PostController extends Controller
                 $post->image = basename($filename);
                 $post->title = $request->input('title');
                 $post->machinery = $request->input('machinery');
+                $post->user_id = $request->input('user_id');
                 $post->comment = $request->input('comment');
                 $post->save();
                 

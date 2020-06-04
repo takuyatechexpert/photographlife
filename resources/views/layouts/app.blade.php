@@ -50,7 +50,7 @@
                                 </li>
                             @endif
                         @else
-                            <a class="btn btn-secondary" href="{{route('post.create')}}" role="button">
+                            <a class="btn btn-secondary mr-2" href="{{route('post.create')}}" role="button">
                                 新規投稿
                             </a>
                             <li class="nav-item dropdown">
