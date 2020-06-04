@@ -2,6 +2,11 @@
 
 @section('content')
 
+{{--成功時のメッセージ--}}
+@if (session('success'))
+  <div class="alert alert-success">{{ session('success') }}</div>
+@endif
+
     <div class="TopPageMain__title">
       新規投稿一覧
     </div>{{-- .TopPageMain__title --}}

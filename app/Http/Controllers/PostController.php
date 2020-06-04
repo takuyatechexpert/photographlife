@@ -61,6 +61,7 @@ class PostController extends Controller
                 // $post->image = $request->file->store('public');
                 $post->image = basename($filename);
                 $post->title = $request->input('title');
+                $post->machinery = $request->input('machinery');
                 $post->comment = $request->input('comment');
                 $post->save();
                 

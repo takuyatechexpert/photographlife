@@ -6,7 +6,7 @@
   <div class="postEditMain--title">
     新規投稿
   </div>
-  <form method="POST" action="#" class="postEditMain--form" enctype="multipart/form-data">
+<form method="POST" action="{{route('post.store')}}" class="postEditMain--form" enctype="multipart/form-data">
     {{-- enctype="multipart/form-data"の記述が重要だった
     これがないと画像がアップロードできない --}}
 
@@ -25,13 +25,20 @@
     {{-- fileのnameがcontroller側で重要になる --}}
     <ul>
       <li>
+        <div>撮影画像</div>
         <input type="file" name="file" class="postEditMain--file">
       </li>
       <li>
+        <div>タイトル</div>
         <input type="text" name="title" class="postEditMain--title">
       </li>
       <li>
-        <textarea rows="10" cols="40"  name="description" class="postEditMain--textArea" placeholder="メッセージを入力してください"></textarea>
+        <div>使用機材</div>
+        <textarea rows="5" cols="40"  name="machinery" class="postEditMain--textArea" placeholder="メッセージを入力してください"></textarea>
+      </li>
+      <li>
+        <div>コメント</div>
+        <textarea rows="10" cols="40"  name="comment" class="postEditMain--textArea" placeholder="メッセージを入力してください"></textarea>
       </li>
       <li>
         <input type="submit" value="Send" class="postEditMain--submit">
