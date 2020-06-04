@@ -1,0 +1,16 @@
+.TopPageMain{
+  background: rgb(221, 221, 221);
+  text-align: center;
+
+  &__title{
+    font-size: 1.8rem;
+  }
+
+  .TopPageMain__box{
+
+    &--image{
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
