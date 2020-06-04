@@ -10,53 +10,21 @@
     <div class="TopPageMain__title">
       新規投稿一覧
     </div>{{-- .TopPageMain__title --}}
+    <ul class="TopPageMain__box">
+      @foreach($posts as $post)
+        <div class="TopPageMain__box__card col-sm-3 my-1 card img-thumbnail">
 
-    <div class="TopPageMain__box col-sm-4 my-1 card img-thumbnail">
+          <div class="TopPageMain__box__card--title">
+            {{$post->title}}
+          </div>{{-- .TopPageMain__box__card--title --}}
 
-      <div class="TopPageMain__box--title">
-        ここにタイトルが入る
-      </div>{{-- .TopPageMain__box--title --}}
+          <img  src="{{ asset('storage/' . $post->image) }}" class="TopPageMain__box__card--image rounded mx-auto d-block" alt="投稿画像">
 
-      <img src="#" class="TopPageMain__box--image mx-auto">
-        ここには画像が入る
-      </img>{{-- .TopPageMain__box--image --}}
-
-      <div class="TopPageMain__box--comment">
-        ここにコメントが入る
-      </div>{{-- .TopPageMain__box--comment --}}
-      
-    </div>{{-- .TopPageMain__box --}}
-
-    <div class="TopPageMain__box col-sm-4 my-1 card img-thumbnail">
-
-      <div class="TopPageMain__box--title">
-        ここにタイトルが入る
-      </div>{{-- .TopPageMain__box--title --}}
-
-      <img src="#" class="TopPageMain__box--image mx-auto">
-        ここには画像が入る
-      </img>{{-- .TopPageMain__box--image --}}
-
-      <div class="TopPageMain__box--comment">
-        ここにコメントが入る
-      </div>{{-- .TopPageMain__box--comment --}}
-      
-    </div>{{-- .TopPageMain__box --}}
-
-    <div class="TopPageMain__box col-sm-4 my-1 card img-thumbnail">
-
-      <div class="TopPageMain__box--title">
-        ここにタイトルが入る
-      </div>{{-- .TopPageMain__box--title --}}
-
-      <img src="#" class="TopPageMain__box--image mx-auto">
-        ここには画像が入る
-      </img>{{-- .TopPageMain__box--image --}}
-
-      <div class="TopPageMain__box--comment">
-        ここにコメントが入る
-      </div>{{-- .TopPageMain__box--comment --}}
-      
-    </div>{{-- .TopPageMain__box --}}
-
-  @endsection
+          <div class="TopPageMain__box__card--comment card-body text-left">
+            {{ mb_strimwidth($post->comment, 0, 40, '...') }}
+          </div>{{-- .TopPageMain__box__card--comment --}}
+          
+        </div>{{-- .TopPageMain__box__card --}}
+      @endforeach
+    </ul>{{-- .TopPageMain__box --}}
+@endsection

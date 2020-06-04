@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Post;
 class TopPageController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class TopPageController extends Controller
     public function index()
     {
         //
-        return view('toppage.index');
+        $posts = Post::all();
+        return view('toppage.index', compact('posts'));
     }
 
     /**

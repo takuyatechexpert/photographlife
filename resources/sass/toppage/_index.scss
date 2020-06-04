@@ -6,11 +6,22 @@
     font-size: 1.8rem;
   }
 
-  .TopPageMain__box{
+  &__box{
+    display: flex;
+    flex-wrap: wrap;
+    
+    &__card{
+      width: 10rem;
+      min-width: 15rem;
+      
+      &--image{
+        width: 100%;
+        height: 200px;
+      }
 
-    &--image{
-      width: 200px;
-      height: 200px;
+      &--comment{
+        min-height: 100px;
+      }
     }
   }
 }
