@@ -25,6 +25,7 @@ class PostController extends Controller
     public function create()
     {
         //
+        return view('post.create');
     }
 
     /**
@@ -36,6 +37,41 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'file' => [
+            // 必須
+            'required',
+            // アップロードされたファイルであること
+            'file',
+            // 画像ファイルであること
+            'image',
+            // MIMEタイプを指定
+            'mimes:jpeg,png',
+            // 最小縦横120px 最大縦横400px
+            // 'dimensions:min_width=120,min_height=120,max_width=400,max_height=400',
+            ]
+            ]);
+            
+            if ($request->file('file')->isValid([])) {
+                $post = new Post;
+
+                $filename = $request->file->store('public');
+                
+                // $user = User::find(auth()->id());
+                // $post->image = $request->file->store('public');
+                $post->image = basename($filename);
+                $post->title = $request->input('title');
+                $post->machinery = $request->input('machinery');
+                $post->comment = $request->input('comment');
+                $post->save();
+                
+                return redirect('/')->with('success', '更新しました。');
+            } else {
+                return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors(['file' => '画像がアップロードされていないか不正なデータです。']);
+            }
     }
 
     /**
@@ -55,9 +91,12 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
         //
+        // $post = Post::find($id);
+
+        // return view('post.edit',compact('post'));
     }
 
     /**

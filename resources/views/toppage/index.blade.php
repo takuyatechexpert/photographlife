@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="TopPageMain container col-sm-10">
+
+{{--成功時のメッセージ--}}
+@if (session('success'))
+  <div class="alert alert-success">{{ session('success') }}</div>
+@endif
 
     <div class="TopPageMain__title">
       新規投稿一覧
@@ -54,6 +58,5 @@
       </div>{{-- .TopPageMain__box--comment --}}
       
     </div>{{-- .TopPageMain__box --}}
-  </div>{{-- .TopPageMain__container --}}
 
   @endsection

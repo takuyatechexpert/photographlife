@@ -74,11 +74,13 @@
         </nav>
 
         <main>
-            @yield('content')
+            <div class="TopPageMain container col-sm-10">
+                @yield('content')
+            </div>
         </main>
         <div class="footer container text-center">
             Copyright &copy; 2020 Photograph Life All Rights Reserved.
           </div>
-    </div>
+    </>
 </body>
 </html>
