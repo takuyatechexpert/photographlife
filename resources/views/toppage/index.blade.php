@@ -19,6 +19,11 @@
           </div>{{-- .TopPageMain__box__card--title --}}
 
           <img  src="{{ asset('storage/' . $post->image) }}" class="TopPageMain__box__card--image rounded mx-auto d-block" alt="投稿画像">
+          
+          <div class="my-2">
+            投稿者 : {{ mb_strimwidth($post->user->name, 0, 15, '...') }}
+
+          </div>
 
           <div class="TopPageMain__box__card--comment card-body text-left">
             {{ mb_strimwidth($post->comment, 0, 40, '...') }}

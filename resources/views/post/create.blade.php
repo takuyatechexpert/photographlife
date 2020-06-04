@@ -41,6 +41,7 @@
         <textarea rows="10" cols="40"  name="comment" class="postEditMain--textArea" placeholder="メッセージを入力してください"></textarea>
       </li>
       <li>
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         <input type="submit" value="Send" class="postEditMain--submit">
       </li>
     </ul>
