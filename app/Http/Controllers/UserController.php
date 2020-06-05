@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Todo;
 
 class UserController extends Controller
 {
@@ -53,8 +54,9 @@ class UserController extends Controller
         //
         // $posts = DB::table('posts')->where('user_id', $id)->get();
         $posts = Post::where('user_id', $id)->orderBy('updated_at', 'desc')->get();
+        $todos = Todo::where('user_id', $id)->orderBy('updated_at', 'desc')->get();
 
-        return view('user.show', compact('posts'));
+        return view('user.show', compact('posts', 'todos'));
     }
 
     /**
