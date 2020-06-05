@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Auth;
 
 class TodoController extends Controller
 {
@@ -38,6 +39,14 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         //
+        $todo = new Todo;
+
+        $todo->title = $request->input('title');
+        $todo->body = $request->input('body');
+        $todo->user_id = $request->input('user_id');
+        $todo->save();
+
+        return redirect()->route('user.show',['id'=> Auth::user() -> id]);
     }
 
     /**
