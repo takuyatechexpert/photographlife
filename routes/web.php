@@ -32,5 +32,11 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth'], function() {
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
     Route::get('show/{id}', 'UserController@show')->name('user.show');
 });
+
+// user認証が必要なtodoページ
+Route::group(['prefix' => 'todo', 'middleware' => 'auth'], function() {
+    Route::get('create', 'TodoController@create')->name('todo.create');
+});
+
 // 投稿内容詳細ページ
 Route::get('/post/{id}', 'PostController@show')->name('post.show');
