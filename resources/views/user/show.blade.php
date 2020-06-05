@@ -34,9 +34,9 @@
 
               <ul class="d-flex justify-content-end">
                 <li>
-                  <button class="btn btn-outline-secondary">
+                <a class="btn btn-outline-secondary" href="{{route('todo.edit', ['id'=> $todo->id])}}">
                     編集
-                  </button>
+                  </a>
                 </li>
                 <li>
                   <button class="btn btn-outline-danger">
