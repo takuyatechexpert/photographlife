@@ -39,6 +39,7 @@ Route::group(['prefix' => 'todo', 'middleware' => 'auth'], function() {
     Route::post('store', 'TodoController@store')->name('todo.store');
     Route::get('edit/{id}', 'TodoController@edit')->name('todo.edit');
     Route::post('update/{id}', 'TodoController@update')->name('todo.update');
+    Route::post('destroy/{id}', 'TodoController@destroy')->name('todo.destroy');
 
 });
 
