@@ -46,7 +46,7 @@ class TodoController extends Controller
         $todo->user_id = $request->input('user_id');
         $todo->save();
 
-        return redirect()->route('user.show',['id'=> Auth::user() -> id]);
+        return redirect()->route('user.show',['id'=> Auth::user() -> id])->with('success', 'Todoを追加にしました。');;
     }
 
     /**

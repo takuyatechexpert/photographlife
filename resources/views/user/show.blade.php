@@ -6,15 +6,11 @@
 @if (session('success'))
   <div class="alert alert-success">{{ session('success') }}</div>
 @endif
-  <div class="userShowMain col-sm-12">
+  <div class="userShowMain col-sm-12 px-0">
     <div class="userShowMain__title h2 p-3">
       マイページ
     </div>{{-- .userShowMain__title --}}
-    
-    <div class="userShowMain__name h3 mb-5">
-      名前：{{Auth::user()->name}}
-    </div>{{-- .userShowMain__title --}}
-    
+
     <div class="userShowMain__posts col-sm-12 d-flex flex-wrap">
       <div class="userShowMain__posts__todo col-sm-6 h3">
         ToDo
@@ -24,7 +20,7 @@
             
             <div class="TopPageMain__box__card col-sm-5 my-1 card mx-1">
               
-              <div class="TopPageMain__box__card--title">
+              <div class="TopPageMain__box__card--title pt-3">
                 {{$todo->title}}
               </div>{{-- .TopPageMain__box__card--title --}}
               

@@ -7,28 +7,30 @@
   <div class="alert alert-success">{{ session('success') }}</div>
 @endif
 
-    <div class="TopPageMain__title">
+    <div class="TopPageMain__title pt-2 px-0">
       新規投稿一覧
     </div>{{-- .TopPageMain__title --}}
-    <div class="TopPageMain__box">
+    <div class="TopPageMain__box col-sm-12">
       @foreach($posts as $post)
-      <a href="{{route('post.show', ['id' => $post->id])}}" class="TopPageMain__box--link btn btn-default">
-        <div class="TopPageMain__box__card col-sm-3 my-1 card img-thumbnail">
-          <div class="TopPageMain__box__card--title">
-            {{$post->title}}
-          </div>{{-- .TopPageMain__box__card--title --}}
+      <a href="{{route('post.show', ['id'=> $post->id])}}" class="TopPageMain__box--link btn btn-default">
+        <div class="TopPageMain__box__card col-sm-6 my-1 card img-thumbnail">
 
-          <img  src="{{ asset('storage/' . $post->image) }}" class="TopPageMain__box__card--image rounded mx-auto d-block" alt="投稿画像">
+          <div class="TopPageMain__box__card--title h4">
+            {{ mb_strimwidth($post->title, 0, 21, '...') }}
+          </div>{{-- .TopPageMain__box__card--title --}}
           
-          <div class="my-2">
+          <img  src="{{ asset('storage/' . $post->image) }}" class="TopPageMain__box__card--image rounded mx-auto d-block" alt="投稿画像">
+
+          <div class="my-2 text-right">
             投稿者 : {{ mb_strimwidth($post->user->name, 0, 15, '...') }}
           </div>
-
+          
           <div class="TopPageMain__box__card--comment card-body text-left">
             {{ mb_strimwidth($post->comment, 0, 40, '...') }}
           </div>{{-- .TopPageMain__box__card--comment --}}
+
         </div>{{-- .TopPageMain__box__card --}}
       </a>
-      @endforeach
+@endforeach
     </div>{{-- .TopPageMain__box --}}
 @endsection

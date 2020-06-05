@@ -69,7 +69,7 @@ class PostController extends Controller
                 $post->comment = $request->input('comment');
                 $post->save();
                 
-                return redirect('/')->with('success', '更新しました。');
+                return redirect('/')->with('success', '投稿が完了しました。');
             } else {
                 return redirect()
                 ->back()
@@ -124,8 +124,14 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
         //
+
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect()->route('user.show',['id'=> Auth::user() -> id])
+                ->with('success', '投稿を削除しました。');
     }
 }
