@@ -11121,3 +11121,8 @@ a.text-dark:focus {
   min-height: 300px;
 }
 
+.userShowMain__posts {
+  display: flex;
+  justify-content: center;
+}
+
