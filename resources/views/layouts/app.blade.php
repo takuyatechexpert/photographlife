@@ -50,6 +50,10 @@
                                 </li>
                             @endif
                         @else
+                            <a class="btn btn-outline-secondary mr-2" href="{{route('todo.create')}}" role="button">
+                                新規To Do
+                            </a>
+
                             <a class="btn btn-outline-secondary mr-2" href="{{route('post.create')}}" role="button">
                                 新規投稿
                             </a>
