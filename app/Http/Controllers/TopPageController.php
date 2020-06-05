@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\DB;
+
+use function Psy\debug;
+
 class TopPageController extends Controller
 {
     /**
@@ -11,10 +15,47 @@ class TopPageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $posts = Post::all();
+        // $posts = Post::all();
+
+        // 検索機能用の記述
+        $search = $request->input('search');
+
+        $query = DB::table('posts');
+        // ここはdb名で良い
+
+        if($search !== null){
+            // 全角スペースを半角に
+            $search_split = mb_convert_kana($search, 's');
+
+            // 空白で区切る
+            $search_split2 = preg_split('/[\s]/', $search_split,-1,PREG_SPLIT_NO_EMPTY);
+
+            // 単語をループで回す
+            foreach($search_split2 as $value)
+            {
+                $query->where('title', 'like', '%'.$value.'%')
+                ->orWhere('machinery', 'like', '%'.$value.'%')
+                ->orWhere('comment', 'like', '%'.$value.'%');
+                
+            }
+        };
+        
+        // postsと紐づいているuserをleftJoinで取得
+        $query->leftJoin('users', 'posts.user_id', '=', 'users.id')
+        ->select('posts.*', 'users.name');
+        $query->orderBy('updated_at', 'asc');
+        $posts = $query->paginate(10);
+        // paginateで取得する個数を指定できる
+        // 最後にcontactsに入れている
+
+        view側では$postsをforeachして{{$post->name}}で取得
+
+
+　
+
         return view('toppage.index', compact('posts'));
     }
 
