@@ -101,8 +101,13 @@ class TodoController extends Controller
      * @param  \App\Models\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Todo $todo)
+    public function destroy($id)
     {
         //
+        $todo = Todo::find($id);
+        $todo->delete();
+
+        return redirect()->route('user.show',['id'=> Auth::user() -> id])
+                ->with('success', 'Todoを完了にしました。');
     }
 }

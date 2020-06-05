@@ -34,14 +34,16 @@
 
               <ul class="d-flex justify-content-end">
                 <li>
-                <a class="btn btn-outline-secondary" href="{{route('todo.edit', ['id'=> $todo->id])}}">
+                <a class="btn btn-outline-secondary mr-1" href="{{route('todo.edit', ['id'=> $todo->id])}}">
                     編集
                   </a>
                 </li>
                 <li>
-                  <button class="btn btn-outline-danger">
-                    完了
-                  </button>
+                <form method="post" action="{{route('todo.destroy', ['id'=>$todo->id])}}">
+                    @csrf
+                    <input type="submit" value="完了" class="btn btn-outline-danger">
+              
+                  </form>
                 </li>
               </ul>
             </div>{{-- .TopPageMain__box__card --}}
