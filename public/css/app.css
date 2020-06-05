@@ -11080,7 +11080,7 @@ a.text-dark:focus {
 }
 
 .TopPageMain {
-  background: #dddddd;
+  background: #dfdfdf;
   text-align: center;
 }
 
@@ -11093,9 +11093,18 @@ a.text-dark:focus {
   flex-wrap: wrap;
 }
 
+.TopPageMain__box--link {
+  color: black;
+}
+
+.TopPageMain__box--link :hover {
+  background: #f3f3f3;
+}
+
 .TopPageMain__box__card {
   width: 10rem;
   min-width: 15rem;
+  box-shadow: 2px 2px 6px 0px;
 }
 
 .TopPageMain__box__card--image {
@@ -11105,5 +11114,10 @@ a.text-dark:focus {
 
 .TopPageMain__box__card--comment {
   min-height: 100px;
+}
+
+.postShowMain--comment {
+  background: white;
+  min-height: 300px;
 }
 
