@@ -3,15 +3,25 @@
 @section('content')
   
 <div class="postShowMain">
-  <div class="postShowMain--title display-4 p-2">
+  <ul class="postShowMain--title h1 pt-3 col-sm-6 mx-auto d-flex justify-content-between align-items-center">
+    <li>
     {{ $post->title}}
-  </div>
+    </li>
+    <li>
+      @if(Auth::user()->id === $post->user_id)
+      <form method="post" action="{{route('post.destroy', ['id'=> $post->id])}}">
+        @csrf
+        <input type="submit" value="削除" class="btn btn-outline-danger py-2 px-4">
+      </form>
+      @endif
+    </li>
+  </ul>
 
   <div class="postShowMain--image">
     <img  src="{{ asset('storage/' . $post->image) }}" class="postShowMain--image--size col-sm-6 p-0" alt="投稿画像">
   </div>
   
-  <div class="my-2 h3">
+  <div class="mt-3 h3 text-right col-sm-6 mx-auto">
     投稿者 : {{ mb_strimwidth($post->user->name, 0, 15, '...') }}
   </div>
 
@@ -24,5 +34,5 @@
   <div class="postShowMain--comment col-sm-6 mx-auto p-3 text-left">
     {{$post->comment}}
   </div>
-</>{{-- .postShowMain --}}
+</button>{{-- .postShowMain --}}
 @endsection

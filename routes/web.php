@@ -26,6 +26,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'post', 'middleware' => 'auth'], function() {
     Route::get('create', 'PostController@create')->name('post.create');
     Route::post('store', 'PostController@store')->name('post.store');
+    Route::post('destroy/{id}', 'PostController@destroy')->name('post.destroy');
+
 });
 
 // user認証が必要なuserページ

@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand display-1" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
                     Photograph Life
                 </a>
@@ -50,16 +50,16 @@
                                 </li>
                             @endif
                         @else
-                            <a class="btn btn-outline-secondary mr-2" href="{{route('todo.create')}}" role="button">
+                            <a class="btn btn-outline-secondary mr-2 mb-1 mt-2" href="{{route('todo.create')}}" role="button">
                                 新規To Do
                             </a>
 
-                            <a class="btn btn-outline-secondary mr-2" href="{{route('post.create')}}" role="button">
+                            <a class="btn btn-outline-secondary mr-2 mb-1 mt-2" href="{{route('post.create')}}" role="button">
                                 新規投稿
                             </a>
                             <li class="nav-item dropdown">
 
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle  mb-1 mt-2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -87,11 +87,11 @@
         </nav>
 
         <main>
-            <div class="TopPageMain container col-sm-10">
+            <div class="TopPageMain container col-sm-10 px-0">
                 @yield('content')
             </div>
         </main>
-        <div class="footer container text-center">
+        <div class="footer container text-center py-3">
             Copyright &copy; 2020 Photograph Life All Rights Reserved.
           </div>
     </>
