@@ -6,7 +6,7 @@
 @if (session('success'))
   <div class="alert alert-success">{{ session('success') }}</div>
 @endif
-  <div class="userShowMain">
+  <div class="userShowMain col-sm-12">
     <div class="userShowMain__title h2 p-3">
       マイページ
     </div>{{-- .userShowMain__title --}}
@@ -15,40 +15,56 @@
       名前：{{Auth::user()->name}}
     </div>{{-- .userShowMain__title --}}
     
-    <div class="userShowMain__posts">
-      <div class="userShowMain__posts__todo col-sm-5">
+    <div class="userShowMain__posts col-sm-12 d-flex flex-wrap">
+      <div class="userShowMain__posts__todo col-sm-6 h3">
         ToDo
-        
-        <div class="userShowMain__posts__todo__list">
-          <div>
-            やることリスト
-          </div>
-          <div>
-            やることリスト
-          </div>
-          <div>
-            やることリスト
-          </div>
-          <div>
-            やることリスト
-          </div>
-        </div>
-      </div>
-      <div class="userShowMain__posts__title col-sm-5">
+
+        <div class="userShowMain__posts__todo__list col-sm-12 d-flex flex-wrap h4">
+          @foreach($todos as $todo)
+            
+            <div class="TopPageMain__box__card col-sm-5 my-1 card mx-1">
+              
+              <div class="TopPageMain__box__card--title">
+                {{$todo->title}}
+              </div>{{-- .TopPageMain__box__card--title --}}
+              
+              <div class="TopPageMain__box__card--comment card-body text-left">
+                {{$todo->body}}
+              </div>{{-- .TopPageMain__box__card--comment --}}
+
+              <ul class="d-flex justify-content-end">
+                <li>
+                  <button class="btn btn-outline-secondary">
+                    編集
+                  </button>
+                </li>
+                <li>
+                  <button class="btn btn-outline-danger">
+                    完了
+                  </button>
+                </li>
+              </ul>
+            </div>{{-- .TopPageMain__box__card --}}
+
+          @endforeach
+
+        </div>{{-- .userShowMain__posts__todo__list --}}
+      </div>{{-- .userShowMain__posts__todo --}}
+      <div class="userShowMain__posts__title col-sm-6 h4">
         投稿一覧
         
-        <div class="userShowMain__posts__list">
+        <div class="userShowMain__posts__list col-sm-12 d-flex flex-wrap">
           @foreach ($posts as $post)
-            <a href="#" class="TopPageMain__box--link btn btn-default">
-              <div class="TopPageMain__box__card col-sm-3 my-1 card img-thumbnail">
+            <a href="{{route('post.show', ['id'=> $post->id])}}" class="TopPageMain__box--link btn btn-default">
+              <div class="TopPageMain__box__card col-sm-6 my-1 card img-thumbnail">
 
-                <div class="TopPageMain__box__card--title">
+                <div class="TopPageMain__box__card--title h4">
                   {{$post->title}}
                 </div>{{-- .TopPageMain__box__card--title --}}
                 
                 <img  src="{{ asset('storage/' . $post->image) }}" class="TopPageMain__box__card--image rounded mx-auto d-block" alt="投稿画像">
 
-                <div class="my-2">
+                <div class="my-2 text-right">
                   投稿者 : {{ mb_strimwidth($post->user->name, 0, 15, '...') }}
                 </div>
                 

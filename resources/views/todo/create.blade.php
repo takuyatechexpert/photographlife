@@ -6,7 +6,7 @@
   <div class="postEditMain--title">
     新規To Do
   </div>
-<form method="POST" action="#" class="postEditMain--form" enctype="multipart/form-data">
+<form method="POST" action="{{route('todo.store')}}" class="postEditMain--form" enctype="multipart/form-data">
     {{-- enctype="multipart/form-data"の記述が重要だった
     これがないと画像がアップロードできない --}}
 
