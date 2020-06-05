@@ -37,6 +37,8 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
 Route::group(['prefix' => 'todo', 'middleware' => 'auth'], function() {
     Route::get('create', 'TodoController@create')->name('todo.create');
     Route::post('store', 'TodoController@store')->name('todo.store');
+    Route::get('edit/{id}', 'TodoController@edit')->name('todo.edit');
+    Route::post('update/{id}', 'TodoController@update')->name('todo.update');
 
 });
 

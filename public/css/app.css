@@ -11126,3 +11126,8 @@ a.text-dark:focus {
   justify-content: center;
 }
 
+img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
