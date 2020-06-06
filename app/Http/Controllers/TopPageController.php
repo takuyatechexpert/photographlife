@@ -51,10 +51,7 @@ class TopPageController extends Controller
         // paginateで取得する個数を指定できる
         // 最後にcontactsに入れている
 
-        view側では$postsをforeachして{{$post->name}}で取得
-
-
-　
+        // view側では$postsをforeachして{{$post->name}}で取得
 
         return view('toppage.index', compact('posts'));
     }
