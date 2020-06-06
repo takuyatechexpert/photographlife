@@ -3,7 +3,7 @@
 @section('content')
   
 <div class="postEditMain">
-  <div class="postEditMain--title">
+  <div class="postEditMain--title h2">
     新規To Do
   </div>
 <form method="POST" action="{{route('todo.store')}}" class="postEditMain--form" enctype="multipart/form-data">
@@ -25,17 +25,26 @@
     {{-- fileのnameがcontroller側で重要になる --}}
     <ul>
       <li>
-        <div>タイトル</div>
-        <input type="text" name="title" class="postEditMain--title">
+        <div>
+          <label class="h3 mt-4 col-sm-5 text-left mx-auto mb-0" for="newTodoTitle">タイトル</label>
+        </div>
+
+        <input type="text" name="title" class="postEditMain--title form-control col-sm-5 mx-auto" 
+                id="newTodoTitle" placeholder="タイトルを入力してください">
       </li>
 
       <li>
-        <div>コメント</div>
-        <textarea rows="10" cols="40"  name="body" class="postEditMain--textArea" placeholder="メッセージを入力してください"></textarea>
+        <div>
+          <label class="h3 mt-4 col-sm-5 text-left mx-auto mb-0" for="newTodoBody">コメント</label>
+        </div>
+
+        <textarea rows="10" cols="40"  name="body" class="postEditMain--textArea form-control col-sm-5 mx-auto"
+                  id="newTodoBody" placeholder="メッセージを入力してください"></textarea>
       </li>
+      
       <li>
         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-        <input type="submit" value="Send" class="postEditMain--submit">
+        <input type="submit" value="Send" class="postEditMain--submit btn btn-secondary btn-lg btn-block col-sm-3 mx-auto mt-5 py-0">
       </li>
     </ul>
   </form>{{-- .postEditMain--form --}}

@@ -46,7 +46,7 @@ class TopPageController extends Controller
         // postsと紐づいているuserをleftJoinで取得
         $query->leftJoin('users', 'posts.user_id', '=', 'users.id')
         ->select('posts.*', 'users.name');
-        $query->orderBy('updated_at', 'asc');
+        $query->orderBy('updated_at', 'desc');
         $posts = $query->paginate(10);
         // paginateで取得する個数を指定できる
         // 最後にcontactsに入れている

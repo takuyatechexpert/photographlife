@@ -11088,26 +11088,26 @@ a.text-dark:focus {
   font-size: 1.8rem;
 }
 
-.postBox--link {
+.TopPageMain .postBox--link {
   color: black;
 }
 
-.postBox--link :hover {
+.TopPageMain .postBox--link :hover {
   background: #f3f3f3;
 }
 
-.postBox__card {
+.TopPageMain .postBox__card {
   width: 10rem;
   min-width: 15rem;
   box-shadow: 2px 2px 6px 0px;
 }
 
-.postBox__card--image {
+.TopPageMain .postBox__card--image {
   width: 100%;
   height: 200px;
 }
 
-.postBox__card--comment {
+.TopPageMain .postBox__card--comment {
   min-height: 100px;
 }
 
@@ -11124,5 +11124,10 @@ img {
 
 a:hover {
   text-decoration: none;
+}
+
+.postEditMain--submit {
+  font-size: 1.8rem;
+  letter-spacing: 3px;
 }
 
