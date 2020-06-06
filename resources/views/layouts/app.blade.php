@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
             <div class="container">
                 <a class="h1 text-secondary mb-0" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
@@ -87,7 +87,7 @@
         </nav>
 
         <main>
-            <div class="TopPageMain container col-sm-10 px-0 py-3">
+            <div class="TopPageMain container col-sm-10 px-0 py-4">
                 @yield('content')
             </div>
         </main>
