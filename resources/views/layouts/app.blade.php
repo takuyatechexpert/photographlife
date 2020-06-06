@@ -87,7 +87,7 @@
         </nav>
 
         <main>
-            <div class="TopPageMain container col-sm-10 px-0">
+            <div class="TopPageMain container col-sm-10 px-0 pb-1">
                 @yield('content')
             </div>
         </main>

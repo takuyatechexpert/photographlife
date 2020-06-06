@@ -8,12 +8,16 @@
     {{ $post->title}}
     </li>
     <li>
-      @if(Auth::user()->id === $post->user_id)
-      <form method="post" action="{{route('post.destroy', ['id'=> $post->id])}}">
-        @csrf
-        <input type="submit" value="削除" class="btn btn-outline-danger py-2 px-4">
-      </form>
-      @endif
+      @guest
+
+      @else
+        @if(Auth::user()->id === $post->user_id)
+        <form method="post" action="{{route('post.destroy', ['id'=> $post->id])}}">
+          @csrf
+          <input type="submit" value="削除" class="btn btn-outline-danger py-2 px-4">
+        </form>
+        @endif
+      @endguest
     </li>
   </ul>
 
