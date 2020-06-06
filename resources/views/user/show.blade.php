@@ -18,15 +18,15 @@
         <div class="userShowMain__posts__todo__list col-sm-12 d-flex flex-wrap h4">
           @foreach($todos as $todo)
             
-            <div class="TopPageMain__box__card col-sm-5 my-1 card mx-1">
+            <div class="postBox__card col-sm-5 my-1 card mx-1">
               
-              <div class="TopPageMain__box__card--title pt-3">
+              <div class="postBox__card--title pt-3">
                 {{$todo->title}}
-              </div>{{-- .TopPageMain__box__card--title --}}
+              </div>{{-- .postBox__card--title --}}
               
-              <div class="TopPageMain__box__card--comment card-body text-left">
+              <div class="postBox__card--comment card-body text-left">
                 {{$todo->body}}
-              </div>{{-- .TopPageMain__box__card--comment --}}
+              </div>{{-- .postBox__card--comment --}}
 
               <ul class="d-flex justify-content-end">
                 <li>
@@ -42,7 +42,7 @@
                   </form>
                 </li>
               </ul>
-            </div>{{-- .TopPageMain__box__card --}}
+            </div>{{-- .postBox__card --}}
 
           @endforeach
 
@@ -53,24 +53,24 @@
         
         <div class="userShowMain__posts__list col-sm-12 d-flex flex-wrap">
           @foreach ($posts as $post)
-            <a href="{{route('post.show', ['id'=> $post->id])}}" class="TopPageMain__box--link btn btn-default">
-              <div class="TopPageMain__box__card col-sm-6 my-1 card img-thumbnail">
+            <a href="{{route('post.show', ['id'=> $post->id])}}" class="postBox--link btn btn-default">
+              <div class="postBox__card col-sm-6 my-1 card img-thumbnail">
 
-                <div class="TopPageMain__box__card--title h4">
+                <div class="postBox__card--title h4">
                   {{$post->title}}
-                </div>{{-- .TopPageMain__box__card--title --}}
+                </div>{{-- .postBox__card--title --}}
                 
-                <img  src="{{ asset('storage/' . $post->image) }}" class="TopPageMain__box__card--image rounded mx-auto d-block" alt="投稿画像">
+                <img  src="{{ asset('storage/' . $post->image) }}" class="postBox__card--image rounded mx-auto d-block" alt="投稿画像">
 
                 <div class="my-2 text-right">
                   投稿者 : {{ mb_strimwidth($post->user->name, 0, 15, '...') }}
                 </div>
                 
-                <div class="TopPageMain__box__card--comment card-body text-left">
+                <div class="postBox__card--comment card-body text-left">
                   {{ mb_strimwidth($post->comment, 0, 40, '...') }}
-                </div>{{-- .TopPageMain__box__card--comment --}}
+                </div>{{-- .postBox__card--comment --}}
 
-              </div>{{-- .TopPageMain__box__card --}}
+              </div>{{-- .postBox__card --}}
             </a>
           @endforeach
         </div>{{-- .userShowMain__posts__list --}}
