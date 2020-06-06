@@ -12,8 +12,16 @@
 
 @import'toppage/index';
 @import'post/show';
-@import'user/show';
 
 img{
   object-fit: cover;
+}
+
+  a:hover{
+    text-decoration: none;
+  }
+
+.postEditMain--submit{
+  font-size: 1.8rem;
+  letter-spacing: 3px;
 }
