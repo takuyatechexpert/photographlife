@@ -5,7 +5,8 @@
 <div class="postEditMain">
   <div class="postEditMain--title">
     新規投稿
-  </div>
+  </div>{{-- .postEditMain--title --}}
+
 <form method="POST" action="{{route('post.store')}}" class="postEditMain--form" enctype="multipart/form-data">
     {{-- enctype="multipart/form-data"の記述が重要だった
     これがないと画像がアップロードできない --}}

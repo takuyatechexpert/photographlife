@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand display-1" href="{{ url('/') }}">
+                <a class="h1 text-secondary mb-0" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
                     Photograph Life
                 </a>
@@ -87,7 +87,7 @@
         </nav>
 
         <main>
-            <div class="TopPageMain container col-sm-10 px-0 pb-1">
+            <div class="TopPageMain container col-sm-10 px-0 py-3">
                 @yield('content')
             </div>
         </main>
