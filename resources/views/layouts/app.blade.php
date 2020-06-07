@@ -91,7 +91,7 @@
                 @yield('content')
             </div>
         </main>
-        <div class="footer container text-center py-3">
+        <div class="footer container text-center py-5">
             Copyright &copy; 2020 Photograph Life All Rights Reserved.
           </div>
     </>
