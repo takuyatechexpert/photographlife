@@ -2,16 +2,18 @@
 
 @section('content')
 
-{{--成功時のメッセージ--}}
-@if (session('success'))
-  <div class="alert alert-success">{{ session('success') }}</div>
-@endif
+  {{--成功時のメッセージ--}}
+  @if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+  @endif
+
   <div class="userShowMain col-sm-12 px-0">
     <div class="userShowMain__title h2 p-3">
       マイページ
     </div>{{-- .userShowMain__title --}}
 
     <div class="userShowMain__posts col-sm-12 d-flex flex-wrap">
+
       <div class="userShowMain__posts__todo col-sm-6 h3">
         ToDo
 
@@ -45,38 +47,25 @@
             </div>{{-- .postBox__card --}}
 
           @endforeach
-
         </div>{{-- .userShowMain__posts__todo__list --}}
+
       </div>{{-- .userShowMain__posts__todo --}}
+
       <div class="userShowMain__posts__title col-sm-6 h4">
         投稿一覧
         
         <div class="userShowMain__posts__list col-sm-12 d-flex flex-wrap">
           @foreach ($posts as $post)
-            <a href="{{route('post.show', ['id'=> $post->id])}}" class="postBox--link btn btn-default">
-              <div class="postBox__card col-sm-6 my-1 card img-thumbnail">
 
-                <div class="postBox__card--title h4">
-                  {{$post->title}}
-                </div>{{-- .postBox__card--title --}}
-                
-                <img  src="{{ asset('storage/' . $post->image) }}" class="postBox__card--image rounded mx-auto d-block" alt="投稿画像">
+            {{-- view/toppage/post_cardからinclude --}}
+            @include('toppage.post_card')
 
-                <div class="my-2 text-right">
-                  投稿者 : {{ mb_strimwidth($post->user->name, 0, 15, '...') }}
-                </div>
-                
-                <div class="postBox__card--comment card-body text-left">
-                  {{ mb_strimwidth($post->comment, 0, 40, '...') }}
-                </div>{{-- .postBox__card--comment --}}
-
-              </div>{{-- .postBox__card --}}
-            </a>
           @endforeach
         </div>{{-- .userShowMain__posts__list --}}
-      </div>{{-- .userShowMain__posts__title --}}
-    </div>{{-- .userShowMain__posts --}}
 
+      </div>{{-- .userShowMain__posts__title --}}
+
+    </div>{{-- .userShowMain__posts --}}
 
   </div>{{-- .userShowMain --}}
 @endsection
