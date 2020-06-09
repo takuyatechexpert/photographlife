@@ -39,3 +39,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+$('.custom-file-input').on('change',function(){
+    $(this).next('.custom-file-label').html($(this)[0].files[0].name);
+  })
