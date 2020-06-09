@@ -30,11 +30,12 @@
           <label class="h3 mt-4 col-sm-5 text-left mx-auto mb-0" for="inputGroupFile01">投稿画像</label>
           </div>
           
-          <div class="custom-file  col-sm-5 mx-auto">
+          <div class="custom-file col-sm-5 mx-auto">
             <input type="file" name="file" class="postEditMain--file custom-file-input col-sm-5 mx-auto"
                   id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
             <label class="custom-file-label" for="inputGroupFile01">ファイルを選択してください</label>
           </div>
+          
         </li>
 
         <li>
