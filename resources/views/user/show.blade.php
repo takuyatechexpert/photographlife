@@ -47,6 +47,11 @@
             </div>{{-- .postBox__card --}}
 
           @endforeach
+
+          <div class="col-sm-12 d-flex justify-content-center mt-4 h6">
+            {{-- ページネートを表示する為の記述 --}}
+            {{ $todos->links() }}
+          </div>
         </div>{{-- .userShowMain__posts__todo__list --}}
 
       </div>{{-- .userShowMain__posts__todo --}}
@@ -61,7 +66,14 @@
             @include('toppage.post_card')
 
           @endforeach
+
         </div>{{-- .userShowMain__posts__list --}}
+        
+        <div class="col-sm-12 d-flex justify-content-center mt-4 h6">
+          {{-- ページネートを表示する為の記述 --}}
+          {{ $posts->appends(['sort' => 'votes'])->links() }}
+          {{-- {{ $posts->links() }} --}}
+        </div>
 
       </div>{{-- .userShowMain__posts__title --}}
 

@@ -32,5 +32,10 @@
         @include('toppage.post_card')
 
       @endforeach
+      <div class="col-sm-12 d-flex justify-content-center mt-4">
+        
+      {{-- ページネートを表示する為の記述 --}}
+      {{ $posts->links() }}
+      </div>
     </div>{{-- .postBox --}}
 @endsection

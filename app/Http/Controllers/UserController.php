@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// 今は要らなくなったがクエリビルダを使用する際に使う
-// クエリビルダを使うとリレーションが使えなくなるので今回はやめた
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -49,13 +47,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
         //
-        // $posts = DB::table('posts')->where('user_id', $id)->get();
-        $posts = Post::where('user_id', $id)->orderBy('updated_at', 'desc')->get();
-        $todos = Todo::where('user_id', $id)->orderBy('updated_at', 'desc')->get();
+        // カードのテンプレートをまとめた関係でクエリビルダを使用しているので
+        // こちらの記述に変更
+        $query = DB::table('posts');
+        $query->leftJoin('users', 'posts.user_id', '=', 'users.id')
+        ->select('posts.*', 'users.name');
+        $query->orderBy('updated_at', 'desc');
+        $posts = $query->paginate(6, ["*"], 'postspage')
+                 ->appends(["todospage" => $request->input('todospage')]);
+        // appendsでtodospageのパラメーターを渡すことによってページ表示を保持できる
 
+        // リレーション関数を使う方法
+        // $posts = Post::where('user_id', $id)->orderBy('updated_at', 'desc')->paginate(6);
+
+        $todos = Todo::where('user_id', $id)->orderBy('updated_at', 'desc')->paginate(6, ["*"], 'todospage')
+                 ->appends(["postspage" => $request->input('postspage')]);
+        
         return view('user.show', compact('posts', 'todos'));
     }
 
