@@ -47,7 +47,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
         //
         // カードのテンプレートをまとめた関係でクエリビルダを使用しているので
@@ -56,12 +56,16 @@ class UserController extends Controller
         $query->leftJoin('users', 'posts.user_id', '=', 'users.id')
         ->select('posts.*', 'users.name');
         $query->orderBy('updated_at', 'desc');
-        $posts = $query->paginate(6);
+        $posts = $query->paginate(6, ["*"], 'postspage')
+                 ->appends(["todospage" => $request->input('todospage')]);
+        // appendsでtodospageのパラメーターを渡すことによってページ表示を保持できる
 
         // リレーション関数を使う方法
         // $posts = Post::where('user_id', $id)->orderBy('updated_at', 'desc')->paginate(6);
-        $todos = Todo::where('user_id', $id)->orderBy('updated_at', 'desc')->get();
 
+        $todos = Todo::where('user_id', $id)->orderBy('updated_at', 'desc')->paginate(6, ["*"], 'todospage')
+                 ->appends(["postspage" => $request->input('postspage')]);
+        
         return view('user.show', compact('posts', 'todos'));
     }
 
