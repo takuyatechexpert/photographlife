@@ -32,5 +32,8 @@
         @include('toppage.post_card')
 
       @endforeach
+      <div class="col-sm-12 d-flex justify-content-center mt-4">
+      {{ $posts->links() }}
+      </div>
     </div>{{-- .postBox --}}
 @endsection
