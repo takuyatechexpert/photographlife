@@ -61,7 +61,13 @@
             @include('toppage.post_card')
 
           @endforeach
+
         </div>{{-- .userShowMain__posts__list --}}
+        
+        <div class="col-sm-12 d-flex justify-content-center mt-4 h6">
+          {{-- ページネートを表示する為の記述 --}}
+          {{ $posts->links() }}
+        </div>
 
       </div>{{-- .userShowMain__posts__title --}}
 
