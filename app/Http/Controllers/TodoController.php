@@ -39,14 +39,25 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         //
-        $todo = new Todo;
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            ]);
 
-        $todo->title = $request->input('title');
-        $todo->body = $request->input('body');
-        $todo->user_id = $request->input('user_id');
-        $todo->save();
+        if ($request->isValid([])) {
 
-        return redirect()->route('user.show',['id'=> Auth::user() -> id])->with('success', 'Todoを追加にしました。');;
+            $todo = new Todo;
+            
+            $todo->title = $request->input('title');
+            $todo->body = $request->input('body');
+            $todo->user_id = $request->input('user_id');
+            $todo->save();
+            
+            return redirect()->route('user.show',['id'=> Auth::user() -> id])->with('success', 'Todoを追加にしました。');;
+        } else {
+            return redirect();
+
+        }
     }
 
     /**
