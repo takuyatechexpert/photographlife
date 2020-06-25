@@ -30,7 +30,7 @@
         </div>
 
         <input type="text" name="title" class="postEditMain--title form-control col-sm-5 mx-auto" 
-                id="newTodoTitle" placeholder="タイトルを入力してください">
+                id="newTodoTitle" placeholder="タイトルを入力してください" value="{{ old('title') }}">
       </li>
 
       <li>
@@ -39,7 +39,7 @@
         </div>
 
         <textarea rows="10" cols="40"  name="body" class="postEditMain--textArea form-control col-sm-5 mx-auto"
-                  id="newTodoBody" placeholder="メッセージを入力してください"></textarea>
+                  id="newTodoBody" placeholder="メッセージを入力してください">{{ old('body') }}</textarea>
       </li>
       
       <li>
