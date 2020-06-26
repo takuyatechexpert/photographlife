@@ -43,7 +43,8 @@
             <label class="h3 mt-4 col-sm-5 text-left mx-auto  mb-0" for="newPostTitle">タイトル</label>
           </div>
 
-          <input type="text" name="title" class="postEditMain--title form-control col-sm-5 mx-auto" id="newPostTitle" placeholder="タイトルを入力してください">
+          <input type="text" name="title" class="postEditMain--title form-control col-sm-5 mx-auto" 
+                 id="newPostTitle" placeholder="タイトルを入力してください" value="{{ old('title') }}">
         </li>
 
         <li>
@@ -52,7 +53,7 @@
           </div>
 
           <textarea rows="5" cols="40"  name="machinery" class="postEditMain--textArea form-control col-sm-5 mx-auto" id="newPostMachinery"
-                    placeholder="使用機材を入力してください&#13;&#10;例&#13;&#10;オリンパス 検索結果OM-D E-M5 Mark III"></textarea>
+                    placeholder="使用機材を入力してください&#13;&#10;例&#13;&#10;オリンパス 検索結果OM-D E-M5 Mark III">{{ old('machinery') }}</textarea>
         </li>
 
         <li>
@@ -61,7 +62,7 @@
           </div>
 
           <textarea rows="10" cols="40"  name="comment" class="postEditMain--textArea form-control col-sm-5 mx-auto" 
-                    id="newPostComment" placeholder="メッセージを入力してください"></textarea>
+                    id="newPostComment" placeholder="メッセージを入力してください">{{ old('comment') }}</textarea>
         </li>
 
         <li>
