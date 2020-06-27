@@ -45,8 +45,6 @@ class PostController extends Controller
 
             $filename = $request->file->store('public');
             
-            // $user = User::find(auth()->id());
-            // $post->image = $request->file->store('public');
             $post->image = basename($filename);
             $post->title = $request->input('title');
             $post->machinery = $request->input('machinery');
