@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use App\Http\Requests\TodoRequest;
+
 use Auth;
 
 class TodoController extends Controller
@@ -36,16 +38,9 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TodoRequest $request)
     {
         //
-        $this->validate($request, [
-            'title' => 'required',
-            'body' => 'required',
-            ]);
-
-        if ($request->isValid([])) {
-
             $todo = new Todo;
             
             $todo->title = $request->input('title');
@@ -53,11 +48,7 @@ class TodoController extends Controller
             $todo->user_id = $request->input('user_id');
             $todo->save();
             
-            return redirect()->route('user.show',['id'=> Auth::user() -> id])->with('success', 'Todoを追加にしました。');;
-        } else {
-            return redirect();
-
-        }
+            return redirect()->route('user.show',['id'=> Auth::user() -> id])->with('success', 'Todoを追加にしました。');
     }
 
     /**
@@ -92,7 +83,7 @@ class TodoController extends Controller
      * @param  \App\Models\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TodoRequest $request, $id)
     {
         //
         $todo = Todo::find($id);

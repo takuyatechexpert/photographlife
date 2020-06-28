@@ -52,6 +52,3 @@
 @endsection
 
 
-<input type="text" name="title" placeholder="入力してください" value="{{ old('title') }}">
-
-
