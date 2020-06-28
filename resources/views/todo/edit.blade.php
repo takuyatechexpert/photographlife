@@ -40,8 +40,7 @@
         </div>
 
         <textarea rows="10" cols="40" name="body" class="postEditMain--textArea form-control col-sm-5 mx-auto"
-                  id="editTodoBody" placeholder="メッセージを入力してください">{{$todo->body}}
-        </textarea>
+                  id="editTodoBody" placeholder="メッセージを入力してください">{{$todo->body}}</textarea>
       </li>
       <li>
         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
