@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+// Intervention Imageを使用する為のuse
+use Intervention\Image\Facades\Image;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
