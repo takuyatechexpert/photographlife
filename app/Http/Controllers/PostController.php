@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 // Intervention Imageを使用する為のuse
 use Intervention\Image\Facades\Image;
+// storageに保存する為に必要
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -43,11 +45,30 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         // 
+        ini_set('memory_limit', '256M');
+
             $post = new Post;
 
-            $filename = $request->file->store('public');
+            $image = $request->file('file');
             
-            $post->image = basename($filename);
+            // よく分からないがこれでresizeできるresize(横, 縦)
+            // Image::makeは画像をキャッチできる
+            // aspectRatio アスペクト比を維持しながらリサイズすることができる
+            $imageResize = Image::make($image)
+            ->resize(1000, null, function ($constraint) {
+                $constraint->aspectRatio();
+                });
+
+            // imageファイルの名前
+            $fileName = $imageResize->basename . '.jpeg';
+
+            // storage::dixkについて公式ドキュメントを見ると初期はlocalでpathはstorage/app
+            // シンボルリンクを貼って保存したい場所はstorage/app/publicに保存したい
+            // その為に 'public' を指定する事した
+            // $image->encode()で画像情報を取得できた
+            Storage::disk('public')->put($fileName, $imageResize->encode());
+
+            $post->image = $fileName;
             $post->title = $request->input('title');
             $post->machinery = $request->input('machinery');
             $post->user_id = $request->input('user_id');
