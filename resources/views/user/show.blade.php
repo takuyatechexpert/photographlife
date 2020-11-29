@@ -57,7 +57,7 @@
       </div>{{-- .userShowMain__posts__todo --}}
 
       <div class="userShowMain__posts__title col-sm-6 h4">
-        投稿一覧
+        投稿写真一覧
         
         <div class="userShowMain__posts__list col-sm-12 d-flex flex-wrap">
           @foreach ($posts as $post)
