@@ -22,7 +22,7 @@
   </form>
 
     <div class="TopPageMain__title pt-2 px-0">
-      新規投稿一覧
+      投稿写真一覧
     </div>{{-- .TopPageMain__title --}}
 
     <div class="postBox col-sm-12 d-flex flex-wrap">
